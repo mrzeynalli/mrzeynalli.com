@@ -4,7 +4,7 @@ import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import { ClientRouter } from "astro:transitions";
 import "@/styles/global.css";
-import { SITE_TITLE, SITE_DESCRIPTION } from "@/config";
+import { SITE, SITE_TITLE, SITE_DESCRIPTION } from "@/config";
 
 export interface Props {
   title?: string;
@@ -12,15 +12,19 @@ export interface Props {
   image?: string;
   sideBarActiveItemID?: string;
   ogType?: string;
+  canonicalURL?: string;
 }
 
 const {
   title = SITE_TITLE,
   description = SITE_DESCRIPTION,
-  image = "/me.jpg",
+  image = `/${SITE.ogImage}`,
   sideBarActiveItemID,
   ogType = "website",
+  canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href,
 } = Astro.props;
+
+const socialImageURL = new URL(image, Astro.site ?? Astro.url).href;
 ---
 
 <!doctype html>
@@ -33,18 +37,27 @@ const {
 
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="author" content={SITE.author} />
+    <link rel="canonical" href={canonicalURL} />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={`${SITE.title} — RSS`}
+      href={new URL("rss.xml", Astro.site ?? Astro.url).href}
+    />
 
     <meta property="og:type" content={ogType} />
-    <meta property="og:url" content={Astro.url} />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(image, Astro.url)} />
+    <meta property="og:image" content={socialImageURL} />
+    <meta property="og:site_name" content={SITE.title} />
 
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={new URL(image, Astro.url)} />
+    <meta property="twitter:image" content={socialImageURL} />
 
     <slot name="head" />
     <ClientRouter />
@@ -64,6 +77,13 @@ const {
     </script>
   </head>
   <body>
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-md focus:bg-base-100 focus:px-4 focus:py-2 focus:shadow-lg focus:outline focus:outline-primary"
+    >
+      Skip to content
+    </a>
+
     <div class="bg-base-100 drawer lg:drawer-open">
       <input id="my-drawer" type="checkbox" class="drawer-toggle" />
 
@@ -74,7 +94,7 @@ const {
 
         <!-- Page body -->
         <div class="flex justify-center flex-1">
-          <main class="p-6 pt-10 w-full max-w-[900px]">
+          <main id="main-content" class="p-6 pt-10 w-full max-w-[900px]">
             <slot />
           </main>
         </div>

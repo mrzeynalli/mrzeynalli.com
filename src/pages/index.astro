@@ -2,11 +2,17 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import HorizontalCard from "@/components/HorizontalCard.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
 import getSortedPosts from "@/utils/getSortedPosts";
+import getSortedProjects from "@/utils/getSortedProjects";
 
-const allPosts = await getCollection("blog", ({ data }) => !data.draft);
-const sortedPosts = getSortedPosts(allPosts);
-const recentPosts = sortedPosts.slice(0, 4);
+const recentPosts = getSortedPosts(await getCollection("blog")).slice(0, 4);
+
+const allProjects = getSortedProjects(await getCollection("projects"));
+const featuredProjects = allProjects.filter(p => p.data.featured);
+const shownProjects = (
+  featuredProjects.length > 0 ? featuredProjects : allProjects
+).slice(0, 4);
 ---
 
 <BaseLayout sideBarActiveItemID="home">
@@ -24,16 +30,41 @@ const recentPosts = sortedPosts.slice(0, 4);
 
     <div class="flex gap-3 mt-8 flex-wrap">
       <a href="/projects" class="btn btn-primary btn-sm">View Projects</a>
-      <a href="/about" class="btn btn-outline btn-sm">About Me</a>
-      <a href="mailto:ezeynalli@hotmail.com" class="btn btn-ghost btn-sm">Contact</a>
+      <a href="/about" class="btn btn-outline btn-sm">Resume</a>
+      <a href="/contact" class="btn btn-ghost btn-sm">Contact</a>
     </div>
   </section>
 
   <div class="divider"></div>
 
+  <!-- Featured projects -->
+  {
+    shownProjects.length > 0 && (
+      <section>
+        <div class="mb-6 flex items-baseline justify-between">
+          <h2 class="text-2xl font-bold">Things I'm Building</h2>
+          <a href="/projects" class="text-sm text-primary hover:underline">
+            All projects →
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+          {shownProjects.map(project => (
+            <ProjectCard project={project} compact />
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <div class="divider my-10"></div>
+
   <!-- Recent posts -->
   <section>
-    <h2 class="text-2xl font-bold mb-6">Recent Work</h2>
+    <div class="mb-6 flex items-baseline justify-between">
+      <h2 class="text-2xl font-bold">Recent Writing</h2>
+      <a href="/blog" class="text-sm text-primary hover:underline">All posts →</a>
+    </div>
 
     {
       recentPosts.map((post, i) => (
@@ -43,9 +74,5 @@ const recentPosts = sortedPosts.slice(0, 4);
         </>
       ))
     }
-
-    <div class="mt-8 text-center">
-      <a href="/projects" class="btn btn-outline btn-sm">All Projects →</a>
-    </div>
   </section>
 </BaseLayout>

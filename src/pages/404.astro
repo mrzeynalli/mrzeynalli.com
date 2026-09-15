@@ -1,30 +1,22 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import Header from "@/components/Header.astro";
-import Footer from "@/components/Footer.astro";
-import LinkButton from "@/components/LinkButton.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import { SITE } from "@/config";
 ---
 
-<Layout title={`404 Not Found | ${SITE.title}`}>
-  <Header />
+<BaseLayout title={`404 Not Found | ${SITE.title}`}>
+  <div class="flex flex-col items-center justify-center py-20 text-center">
+    <h1 class="text-8xl font-bold text-primary">404</h1>
+    <span class="mt-2 text-base-content/40" aria-hidden="true">¯\_(ツ)_/¯</span>
+    <p class="mt-4 text-2xl font-semibold">Page not found</p>
+    <p class="mt-2 text-base-content/60">
+      That page has moved, or never existed.
+    </p>
 
-  <main
-    id="main-content"
-    class="app-layout flex flex-1 items-center justify-center"
-  >
-    <div class="mb-14 flex flex-col items-center justify-center">
-      <h1 class="text-9xl font-bold text-accent">404</h1>
-      <span aria-hidden="true">¯\_(ツ)_/¯</span>
-      <p class="mt-4 text-2xl sm:text-3xl">Page Not Found</p>
-      <LinkButton
-        href="/"
-        class="my-6 text-lg underline decoration-dashed underline-offset-8"
-      >
-        Go back home
-      </LinkButton>
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <a href="/" class="btn btn-primary btn-sm">Go home</a>
+      <a href="/projects" class="btn btn-outline btn-sm">Projects</a>
+      <a href="/blog" class="btn btn-outline btn-sm">Blog</a>
+      <a href="/search" class="btn btn-ghost btn-sm">Search</a>
     </div>
-  </main>
-
-  <Footer />
-</Layout>
+  </div>
+</BaseLayout>

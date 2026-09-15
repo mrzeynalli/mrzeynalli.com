@@ -12,7 +12,7 @@ export const getStaticPaths = (() => {
 
 const posts = await getCollection(
   "blog",
-  ({ data }) => !data.draft && data.category === "Analytics"
+  ({ data }) => data.category === "Analytics"
 );
 const sortedPosts = getSortedPosts(posts);
 ---

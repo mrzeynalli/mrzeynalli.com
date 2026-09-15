@@ -23,7 +23,11 @@
       @apply mx-auto rounded;
     }
 
+    /* Wide tables scroll inside themselves rather than the page */
     table {
+      @apply block w-max max-w-full overflow-x-auto;
+      font-variant-numeric: tabular-nums;
+
       th,
       td {
         @apply border border-base-300 p-2;

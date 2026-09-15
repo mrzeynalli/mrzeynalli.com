@@ -1,0 +1,33 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+import getSortedProjects from "@/utils/getSortedProjects";
+import { SITE } from "@/config";
+
+const projects = getSortedProjects(await getCollection("projects"));
+---
+
+<BaseLayout
+  title={`Projects | ${SITE.title}`}
+  description="Systems Elvin Zeynalli builds and runs: market data pipelines, backtesting environments and analytics tooling."
+  sideBarActiveItemID="projects"
+>
+  <h1 class="text-3xl font-bold mb-2">Projects</h1>
+  <p class="text-base-content/60 mb-8">
+    Things I build and run, rather than write about. Each one is a system in
+    active use &mdash; the status badge says whether it is publicly reachable.
+  </p>
+
+  {
+    projects.length === 0 ? (
+      <p class="text-base-content/50">Nothing published here yet.</p>
+    ) : (
+      <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+        {projects.map(project => (
+          <ProjectCard project={project} />
+        ))}
+      </div>
+    )
+  }
+</BaseLayout>

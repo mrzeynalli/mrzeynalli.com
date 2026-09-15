@@ -5,7 +5,7 @@ import { getPath } from "@/utils/getPath";
 type Props = CollectionEntry<"blog">;
 
 const { id, data, filePath, body } = Astro.props;
-const { title, description, pubDatetime, category, tags } = data;
+const { title, description, pubDatetime, category, tags, featured } = data;
 
 const wordCount = body?.trim().split(/\s+/).length ?? 0;
 const readingTime = Math.max(1, Math.ceil(wordCount / 200));
@@ -39,6 +39,7 @@ const displayDate = new Date(pubDatetime).toLocaleDateString("en-US", {
         <span class="badge badge-outline badge-sm">{category}</span>
       )
     }
+    {featured && <span class="badge badge-primary badge-sm">Featured</span>}
   </div>
 
   <p class="mt-2 text-base-content/75 leading-relaxed">{description}</p>

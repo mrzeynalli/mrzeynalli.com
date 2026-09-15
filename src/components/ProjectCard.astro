@@ -1,0 +1,103 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+
+type Props = { project: CollectionEntry<"projects">; compact?: boolean };
+
+const { project, compact = false } = Astro.props;
+const { title, tagline, status, stack, liveUrl, repoUrl, screenshot, draft } =
+  project.data;
+
+const href = `/projects/${project.id}`;
+
+const statusLabel = {
+  live: "Live",
+  wip: "In progress",
+  archived: "Archived",
+}[status];
+
+const statusClass = {
+  live: "badge-success",
+  wip: "badge-warning",
+  archived: "badge-ghost",
+}[status];
+---
+
+<div
+  class="group flex h-full flex-col overflow-hidden rounded-xl bg-base-200/40 transition-colors hover:bg-base-200"
+>
+  {
+    screenshot && (
+      <a href={href} class="block overflow-hidden bg-base-300/50">
+        <Image
+          src={screenshot}
+          alt={`${title} screenshot`}
+          width={640}
+          height={360}
+          class="aspect-video w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+        />
+      </a>
+    )
+  }
+
+  <div class="flex flex-1 flex-col p-5">
+    <div class="flex items-start justify-between gap-3">
+      <a href={href}>
+        <h3
+          class="text-lg font-bold leading-snug transition-colors group-hover:text-primary"
+        >
+          {title}
+        </h3>
+      </a>
+      <span class:list={["badge badge-sm shrink-0", statusClass]}>
+        {statusLabel}
+      </span>
+    </div>
+
+    {draft && <span class="badge badge-outline badge-xs mt-2 w-fit">draft</span>}
+
+    <p class="mt-2 flex-1 text-sm leading-relaxed text-base-content/75">
+      {tagline}
+    </p>
+
+    {
+      stack.length > 0 && (
+        <div class="mt-4 flex flex-wrap gap-1">
+          {stack.slice(0, compact ? 4 : 8).map(item => (
+            <span class="badge badge-ghost badge-sm">{item}</span>
+          ))}
+        </div>
+      )
+    }
+
+    <div class="mt-4 flex flex-wrap items-center gap-3 text-sm">
+      <a href={href} class="font-medium text-primary hover:underline">
+        Details →
+      </a>
+      {
+        liveUrl && (
+          <a
+            href={liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-base-content/60 transition-colors hover:text-primary"
+          >
+            Live ↗
+          </a>
+        )
+      }
+      {
+        repoUrl && (
+          <a
+            href={repoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-base-content/60 transition-colors hover:text-primary"
+          >
+            Code ↗
+          </a>
+        )
+      }
+    </div>
+  </div>
+</div>

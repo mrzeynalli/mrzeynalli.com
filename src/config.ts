@@ -1,4 +1,4 @@
-// Named exports used by Astrofy-style layouts
+// Named exports used by the layout components
 export const SITE_TITLE = "Elvin Zeynalli";
 export const SITE_DESCRIPTION =
   "Business Analyst / Quantitative Researcher / Automation Engineer";
@@ -9,18 +9,13 @@ export const SITE = {
   profile: "https://mrzeynalli.xyz/",
   desc: "Business Analyst / Quantitative Researcher / Automation Engineer",
   title: "Elvin Zeynalli",
-  ogImage: "astropaper-og.jpg",
+  // Fallback social card. Per-post cards are generated at /blog/<slug>/index.png
+  ogImage: "og.png",
   lightAndDarkMode: true,
-  postPerIndex: 4,
-  postPerPage: 4,
-  scheduledPostMargin: 15 * 60 * 1000, 
+  postPerPage: 6,
+  scheduledPostMargin: 15 * 60 * 1000,
   showArchives: true,
-  showBackButton: true, 
-  editPost: {
-    enabled: false, // Set to false if you don't want "Edit page" links on posts
-    text: "Edit page",
-    url: "https://github.com/your-username/your-repo-name/edit/main/",
-  },
+  showBackButton: true,
   dynamicOgImage: true,
   dir: "ltr",
   lang: "en",
