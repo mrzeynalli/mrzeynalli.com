@@ -11,7 +11,7 @@ const iconMap: Record<string, string> = {
 };
 ---
 
-<div class="px-4 pb-6 pt-4">
+<div class="border-base-300 border-t px-4 pt-4 pb-5">
   <!-- Social icons -->
   <div class="flex justify-center gap-3 flex-wrap">
     {
@@ -35,7 +35,32 @@ const iconMap: Record<string, string> = {
         </a>
       ))
     }
+
+    <a
+      href="/rss.xml"
+      title="RSS feed"
+      aria-label="RSS feed"
+      class="text-base-content/50 hover:text-base-content transition-colors"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        style="fill: currentColor"
+      >
+        <circle cx="4.75" cy="19.25" r="2.25"/>
+        <path d="M3 10.5v3a7.5 7.5 0 0 1 7.5 7.5h3A10.5 10.5 0 0 0 3 10.5z"/>
+        <path d="M3 3v3a15 15 0 0 1 15 15h3A18 18 0 0 0 3 3z"/>
+      </svg>
+    </a>
   </div>
 
+  <a
+    href="mailto:ezeynalli@hotmail.com"
+    class="text-base-content/40 hover:text-base-content mt-3 block text-center text-[0.7rem] transition-colors"
+  >
+    ezeynalli@hotmail.com
+  </a>
 </div>
 
