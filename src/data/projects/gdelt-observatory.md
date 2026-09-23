@@ -2,7 +2,7 @@
 title: "Geopolitical Risk Observatory"
 tagline: "A daily risk dashboard over the GDELT global news event database, separating how bad things are from how fast they're changing."
 description: "A dashboard built on GDELT 2.0 event data that tracks geopolitical risk across 32 countries, deliberately separating risk level, risk momentum and risk anomaly rather than collapsing them into one number."
-status: live
+status: archived
 startDate: 2026-06-01
 stack:
   - React
@@ -13,11 +13,8 @@ stack:
   - BigQuery
   - Docker
   - Nginx
-liveUrl: https://analytics.mrzeynalli.xyz/gdelt
 featured: true
 order: 20
-relatedPosts:
-  - gdelt-observatory
 ---
 
 GDELT machine-codes the world's news — who did what to whom, where, and in what

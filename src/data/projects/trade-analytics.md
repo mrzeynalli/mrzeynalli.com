@@ -2,7 +2,7 @@
 title: "Global Trade Intelligence"
 tagline: "Interactive analytics over UN Comtrade data — what a country trades, with whom, how concentrated it is, and where it's comparatively strong."
 description: "An analytics product built on UN Comtrade merchandise trade statistics, answering for any country what it trades, with which partners, how that has changed, and how dependent or diversified it is."
-status: live
+status: archived
 startDate: 2026-09-01
 stack:
   - React 19
@@ -14,11 +14,8 @@ stack:
   - DuckDB
   - Parquet
   - SQLite
-liveUrl: https://analytics.mrzeynalli.xyz/trade
 featured: true
 order: 30
-relatedPosts:
-  - trade-analytics
 ---
 
 Pick a country and this answers: what does it trade, with whom, how much, how
