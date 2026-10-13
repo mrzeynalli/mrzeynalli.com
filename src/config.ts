@@ -4,9 +4,9 @@ export const SITE_DESCRIPTION =
   "Business Analyst / Quantitative Researcher / Automation Engineer";
 
 export const SITE = {
-  website: "https://mrzeynalli.xyz/",
+  website: "https://mrzeynalli.com/",
   author: "Elvin Zeynalli",
-  profile: "https://mrzeynalli.xyz/",
+  profile: "https://mrzeynalli.com/",
   desc: "Business Analyst / Quantitative Researcher / Automation Engineer",
   title: "Elvin Zeynalli",
   // Fallback social card. Per-post cards are generated at /blog/<slug>/index.png

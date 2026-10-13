@@ -1,8 +1,8 @@
 ---
 author: Elvin Zeynalli
 pubDatetime: 2026-04-15T12:00:00+03:00
-title: "Building CIBIM: A Research Terminal for 10,800 Instruments"
-postSlug: cibim
+title: "Building Portafel: A Research Terminal for 10,800 Instruments"
+postSlug: portafel
 featured: true
 draft: false
 tags:
@@ -14,13 +14,13 @@ tags:
   - Next.js
   - Python
 category: Automation
-description: "CIBIM covers ~10,800 stocks, ETFs, indices, commodities, FX pairs and crypto, turning company news into a personal briefing with filings, financials and price history alongside it. Here is how it is built and what was harder than expected."
+description: "Portafel covers ~10,800 stocks, ETFs, indices, commodities, FX pairs and crypto, turning company news into a personal briefing with filings, financials and price history alongside it. Here is how it is built and what was harder than expected."
 ---
 
 **Project description**
 - *Stack:* Next.js 16, React 19, TypeScript, PostgreSQL 16, Python, FastAPI
-- *Live:* [cibim.app](https://cibim.app)
-- *Project page:* [CIBIM](/projects/cibim)
+- *Live:* [portafel.com](https://portafel.com)
+- *Project page:* [Portafel](/projects/portafel)
 
 ---
 
@@ -31,7 +31,7 @@ specific way. The news is on one site, the filings are on another, the financial
 are behind a login somewhere else, and the price chart is on a fourth. None of
 them agree on what a ticker symbol means.
 
-CIBIM is my attempt at putting all of that on one page, with a link back to the
+Portafel is my attempt at putting all of that on one page, with a link back to the
 original source for anything it claims.
 
 ## What it covers
@@ -111,7 +111,7 @@ The web app is Next.js 16 on PostgreSQL 16. Scheduled Python jobs do all the
 ingestion and write to Postgres. Two small services sit alongside: FinBERT for
 sentiment, and a capped WebSocket fan-out that gives browsers live quotes —
 Binance public streams for supported crypto, Yahoo for everything else. Browsers
-only ever connect to CIBIM's own same-origin fan-out, and no trading key is
+only ever connect to Portafel's own same-origin fan-out, and no trading key is
 involved anywhere.
 
 PostgreSQL is the single canonical store for market history. The history endpoint
@@ -134,5 +134,5 @@ SEC filings have clearer provenance, but their terms still need review.
 
 I'd rather say that plainly than ship a paywall and find out later.
 
-CIBIM is informational software — not an investment adviser, not a brokerage.
+Portafel is informational software — not an investment adviser, not a brokerage.
 Market data, news, estimates and generated text can all be incomplete or wrong.

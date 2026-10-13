@@ -2,6 +2,8 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     { "source": "/posts", "destination": "/blog", "permanent": true },
-    { "source": "/posts/:slug*", "destination": "/blog/:slug*", "permanent": true }
+    { "source": "/posts/:slug*", "destination": "/blog/:slug*", "permanent": true },
+    { "source": "/projects/cibim", "destination": "/projects/portafel", "permanent": true },
+    { "source": "/blog/cibim", "destination": "/blog/portafel", "permanent": true }
   ]
 }

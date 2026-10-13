@@ -1,7 +1,7 @@
 ---
-title: "CIBIM"
+title: "Portafel"
 tagline: "A research terminal for US-listed stocks and ETFs — news scored by FinBERT, SEC filings, financials and price history, all in one place."
-description: "CIBIM is a market research application covering ~10,800 instruments. It turns company news into a personal briefing around the tickers you follow, and keeps official filings, financials, earnings and price history one click away."
+description: "Portafel is a market research application covering ~10,800 instruments. It turns company news into a personal briefing around the tickers you follow, and keeps official filings, financials, earnings and price history one click away."
 status: live
 startDate: 2026-04-01
 stack:
@@ -15,14 +15,14 @@ stack:
   - FinBERT
   - ECharts
   - Expo (iOS)
-liveUrl: https://cibim.app
+liveUrl: https://portafel.com
 featured: true
 order: 40
 relatedPosts:
-  - cibim
+  - portafel
 ---
 
-CIBIM is the biggest thing I run. It covers roughly **10,800 instruments** —
+Portafel is the biggest thing I run. It covers roughly **10,800 instruments** —
 every eligible common-equity listing and every fund in the Nasdaq screeners
 (~5,400 stocks and ~5,200 ETFs), plus a curated set of world indices,
 commodities, FX pairs and crypto.
@@ -74,4 +74,4 @@ provider, proper data-redistribution licensing for the Yahoo and Nasdaq feeds,
 and a production privacy and security review. The current ingestion is
 appropriate for a research prototype and I'm not pretending otherwise.
 
-CIBIM is informational software — not an investment adviser and not a brokerage.
+Portafel is informational software — not an investment adviser and not a brokerage.

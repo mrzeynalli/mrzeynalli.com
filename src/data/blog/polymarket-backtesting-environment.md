@@ -17,7 +17,7 @@ description: "Four ways a prediction-market backtest quietly lies to you, the re
 
 **Project description**
 - *Stack:* Python 3.13, WebSockets, Zstandard, Parquet, DuckDB, SQLite
-- *Live:* [polymarket.cibim.app](https://polymarket.cibim.app)
+- *Live:* [polymarket.portafel.com](https://polymarket.portafel.com)
 - *Project page:* [Polymarket BTC Backtester](/projects/polymarket-backtester)
 
 ---
