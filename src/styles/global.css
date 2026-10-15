@@ -2,8 +2,81 @@
 @import "./typography.css";
 @import "katex/dist/katex.min.css";
 
+/*
+  Minimalist palette: neutral greys, one muted slate-blue accent, no
+  shadows, small radii. Status colours are desaturated so they read as
+  information rather than decoration.
+*/
 @plugin "daisyui" {
-  themes: lofi --default, dark --prefersdark;
+  themes: false;
+}
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  color-scheme: light;
+  --color-base-100: #ffffff;
+  --color-base-200: #f7f7f6;
+  --color-base-300: #e6e6e4;
+  --color-base-content: #222222;
+  --color-primary: #2f4b7c;
+  --color-primary-content: #ffffff;
+  --color-secondary: #6b6b6b;
+  --color-secondary-content: #ffffff;
+  --color-accent: #2f4b7c;
+  --color-accent-content: #ffffff;
+  --color-neutral: #222222;
+  --color-neutral-content: #ffffff;
+  --color-info: #2f4b7c;
+  --color-info-content: #ffffff;
+  --color-success: #3f6b52;
+  --color-success-content: #ffffff;
+  --color-warning: #8a6d2b;
+  --color-warning-content: #ffffff;
+  --color-error: #a14040;
+  --color-error-content: #ffffff;
+  --radius-selector: 0.25rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.375rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@plugin "daisyui/theme" {
+  name: "dark";
+  prefersdark: true;
+  color-scheme: dark;
+  --color-base-100: #171717;
+  --color-base-200: #1e1e1e;
+  --color-base-300: #2c2c2c;
+  --color-base-content: #e4e4e4;
+  --color-primary: #9fb3dd;
+  --color-primary-content: #141414;
+  --color-secondary: #9a9a9a;
+  --color-secondary-content: #141414;
+  --color-accent: #9fb3dd;
+  --color-accent-content: #141414;
+  --color-neutral: #e4e4e4;
+  --color-neutral-content: #171717;
+  --color-info: #9fb3dd;
+  --color-info-content: #141414;
+  --color-success: #8fb8a0;
+  --color-success-content: #141414;
+  --color-warning: #c9ad6a;
+  --color-warning-content: #141414;
+  --color-error: #d08a8a;
+  --color-error-content: #141414;
+  --radius-selector: 0.25rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.375rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
 }
 
 /* Map Tailwind's dark: prefix to DaisyUI's data-theme="dark" */

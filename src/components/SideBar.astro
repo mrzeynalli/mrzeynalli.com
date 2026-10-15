@@ -20,12 +20,7 @@ const roles = SITE_DESCRIPTION.split("/").map(r => r.trim());
   >
     <!-- Profile -->
     <div class="relative">
-      <!-- Soft banner behind the avatar -->
-      <div
-        class="from-primary/25 via-primary/5 h-24 bg-gradient-to-br to-transparent"
-        aria-hidden="true"
-      >
-      </div>
+      <div class="h-24" aria-hidden="true"></div>
 
       <!-- Theme toggle -->
       <button
@@ -89,7 +84,7 @@ const roles = SITE_DESCRIPTION.split("/").map(r => r.trim());
       <div class="-mt-16 px-6 pb-5 text-center">
         <a href="/" class="group inline-block" aria-label="Home">
           <span
-            class="ring-base-100 bg-base-100 ring-offset-primary/30 group-hover:ring-offset-primary block rounded-full ring-4 ring-offset-2 transition-all duration-300"
+            class="ring-base-100 bg-base-100 ring-offset-base-300 group-hover:ring-offset-base-content/40 block rounded-full ring-4 ring-offset-2 transition-all duration-300"
           >
             <Image
               src="/me.jpg"

@@ -1,6 +1,6 @@
 // Constants
 const THEME = "theme";
-const LIGHT = "lofi";
+const LIGHT = "light";
 const DARK = "dark";
 
 // Initial color scheme
