@@ -1,13 +1,13 @@
 // Named exports used by the layout components
 export const SITE_TITLE = "Elvin Zeynalli";
 export const SITE_DESCRIPTION =
-  "Business Analyst / Quantitative Researcher / Automation Engineer";
+  "Quantitative Researcher / Business Analyst";
 
 export const SITE = {
   website: "https://mrzeynalli.com/",
   author: "Elvin Zeynalli",
   profile: "https://mrzeynalli.com/",
-  desc: "Business Analyst / Quantitative Researcher / Automation Engineer",
+  desc: "Quantitative Researcher / Business Analyst",
   title: "Elvin Zeynalli",
   // Fallback social card. Per-post cards are generated at /blog/<slug>/index.png
   ogImage: "og.png",

@@ -1,7 +1,7 @@
 ---
 title: "Portafel"
 tagline: "A research terminal for US-listed stocks and ETFs — news scored by FinBERT, SEC filings, financials and price history, all in one place."
-description: "Portafel is a market research application covering ~10,800 instruments. It turns company news into a personal briefing around the tickers you follow, and keeps official filings, financials, earnings and price history one click away."
+description: "Portafel is a market research application covering 10,987 instruments. It turns company news into a personal briefing around the tickers you follow, and keeps official filings, financials, earnings and price history one click away."
 status: live
 startDate: 2026-04-01
 stack:
@@ -22,7 +22,7 @@ relatedPosts:
   - portafel
 ---
 
-Portafel is the biggest thing I run. It covers roughly **10,800 instruments** —
+Portafel is the biggest thing I run. It covers **10,987 active instruments** across six asset classes —
 every eligible common-equity listing and every fund in the Nasdaq screeners
 (~5,400 stocks and ~5,200 ETFs), plus a curated set of world indices,
 commodities, FX pairs and crypto.

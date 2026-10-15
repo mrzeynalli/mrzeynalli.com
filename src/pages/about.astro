@@ -8,7 +8,7 @@ const personSchema = {
   name: "Elvin Zeynalli",
   url: SITE.website,
   image: `${SITE.website}me.jpg`,
-  jobTitle: "PhD Candidate in Business Analytics & Operations Management",
+  jobTitle: "Quantitative Researcher & Business Analyst",
   worksFor: {
     "@type": "Organization",
     name: "Sabanci University",
@@ -19,13 +19,12 @@ const personSchema = {
     { "@type": "CollegeOrUniversity", name: "ADA University" },
   ],
   knowsAbout: [
-    "Business Analytics",
     "Quantitative Research",
     "Reinforcement Learning",
-    "Machine Learning",
+    "Algorithmic Trading",
     "Portfolio Optimization",
-    "Trading Execution",
-    "Data Analysis",
+    "Stochastic Processes",
+    "Business Analytics",
     "Python",
     "SQL",
   ],
@@ -35,6 +34,207 @@ const personSchema = {
     "https://mrzeynalli.medium.com/",
   ],
 };
+
+type Entry = {
+  title: string;
+  org: string;
+  dates: string;
+  place: string;
+  primary?: boolean;
+  lines?: string[];
+  scholarship?: string;
+  coursework?: string;
+};
+
+const education: Entry[] = [
+  {
+    title: "PhD \u2014 Business Analytics & Operations Management",
+    org: "Sabanci University",
+    dates: "Feb 2024 \u2014 Present",
+    place: "Istanbul, T\u00fcrkiye",
+    primary: true,
+    lines: ["GPA: 3.58 / 4.00"],
+    scholarship: "Full Scholarship",
+    coursework:
+      "Stochastic Processes \u00b7 Probability & Statistics \u00b7 Methods of Statistical Inference \u00b7 Dynamic Programming \u00b7 Operations & Decision Analytics \u00b7 Data Mining \u00b7 Logistics & Transportation Systems Planning",
+  },
+  {
+    title: "MSc \u2014 Business Analytics",
+    org: "University of Edinburgh (QS World Top 20, 2022)",
+    dates: "Sept 2022 \u2014 Sept 2023",
+    place: "Edinburgh, UK",
+    primary: true,
+    lines: ["Grade: Merit"],
+    scholarship: "Full Merit-Based Scholarship (100% tuition waiver + monthly stipend)",
+    coursework:
+      "Predictive Analytics \u00b7 Prescriptive Analytics \u00b7 Stochastic Optimization \u00b7 Simulation Modelling \u00b7 Python Programming \u00b7 Game Theory for Business Analytics \u00b7 Web & Social Network Analytics",
+  },
+  {
+    title: "BBA \u2014 Business Administration",
+    org: "ADA University",
+    dates: "Sept 2017 \u2014 Jun 2022",
+    place: "Baku, Azerbaijan",
+    primary: true,
+    lines: ["GPA: 3.52 / 4.00"],
+    scholarship: "Full Scholarship (100% tuition waiver)",
+    coursework:
+      "Business Analytics \u00b7 Business Statistics \u00b7 Operations Management \u00b7 Corporate Finance \u00b7 Financial Investments \u00b7 Calculus \u00b7 Microeconomics \u00b7 Macroeconomics \u00b7 Management Information Systems",
+  },
+  {
+    title: "Exchange Semester",
+    org: "ICD Business School",
+    dates: "Jan 2020 \u2014 May 2020",
+    place: "Paris, France",
+    scholarship: "Erasmus+ Scholarship (100% tuition waiver + monthly stipend)",
+    coursework:
+      "International Finance \u00b7 Negotiation Strategies \u00b7 Digital Marketing \u00b7 Business Plan \u00b7 Hackathon",
+  },
+];
+
+const experience: Entry[] = [
+  {
+    title: "Researcher & Teaching Assistant",
+    org: "Sabanci University",
+    dates: "Feb 2024 \u2014 Present",
+    place: "Istanbul, T\u00fcrkiye",
+    primary: true,
+    lines: [
+      "Researching reinforcement learning for trading in financial markets: a recurrent PPO agent for BTC perpetual futures, evaluated with an expanding walk-forward design",
+      "TA for a PhD-level stochastic modelling course and for Introduction to Data Analysis, Decision Making Under Uncertainty, Introduction to Management, and International Business (400+ students in total)",
+      "Ran recitations, graded exams, gave feedback, and supported student projects",
+    ],
+  },
+  {
+    title: "Business Development Representative",
+    org: "Chamberlain McBain",
+    dates: "Jun 2023 \u2014 Dec 2023",
+    place: "Edinburgh, UK",
+    lines: [
+      "Built a Python automation that scraped and structured court rolls and cross-matched 260,000+ entries to surface high-potential leads; built Tableau dashboards enriched with Companies House API data",
+      "Automated the full weekly workflow (scrape \u2192 structure \u2192 analysis \u2192 visualization), replacing roughly two days of manual work",
+      "Automated a pipeline that pulls commercial property data from 5 online sources, consolidates it into databases, and cross-checks it against Scottish Assessors records to identify owners; still run weekly by the firm",
+    ],
+  },
+  {
+    title: "Data Validation Associate",
+    org: "Ipsos MORI",
+    dates: "Jan 2023 \u2014 Jun 2023",
+    place: "Edinburgh, UK",
+    lines: [
+      "Validated survey, telephone-interview, and venue-visit data against source records before client delivery",
+    ],
+  },
+  {
+    title: "Junior Financial Analyst",
+    org: "FINADCO",
+    dates: "Feb 2022 \u2014 Sept 2022",
+    place: "Baku, Azerbaijan",
+    lines: [
+      "Conducted due diligence and feasibility studies, including a USD 17M venture",
+      "Performed financial modelling and sensitivity analysis",
+      "Valued five government-owned assets and equipment exceeding USD 4M",
+      "Researched the local bond market and the hazelnut industry",
+    ],
+  },
+  {
+    title: "Teaching Assistant",
+    org: "ADA University",
+    dates: "Oct 2021 \u2014 Jan 2022",
+    place: "Baku, Azerbaijan",
+    lines: ["TA for Business Statistics"],
+  },
+  {
+    title: "Communications Assistant",
+    org: "Azerbaijan Micro-Finance Association",
+    dates: "Jan 2021 \u2014 Dec 2021",
+    place: "Baku, Azerbaijan",
+    lines: [
+      "Built dashboards and reports for senior stakeholders in financial institutions",
+      "Helped shift data collection from handwritten forms to digital forms",
+      "Coordinated stakeholder communication and performance reporting",
+    ],
+  },
+];
+
+const skills: { heading: string; items: string[] }[] = [
+  {
+    heading: "Quantitative",
+    items: [
+      "Reinforcement Learning (PPO)",
+      "Stochastic Processes",
+      "Probability",
+      "Statistics",
+      "Stochastic Optimization",
+      "Dynamic Programming",
+      "Time-Series Analysis",
+      "Backtesting",
+    ],
+  },
+  {
+    heading: "Programming & Data",
+    items: [
+      "Python",
+      "pandas",
+      "NumPy",
+      "SciPy",
+      "scikit-learn",
+      "statsmodels",
+      "PyTorch",
+      "TensorFlow",
+      "SQL",
+      "Excel",
+      "Git",
+      "Linux / command line",
+      "PostgreSQL",
+      "MongoDB",
+      "Parquet",
+    ],
+  },
+  {
+    heading: "Market Data",
+    items: ["WebSocket / REST data capture", "Level-2 order-book reconstruction"],
+  },
+  {
+    heading: "Analytics",
+    items: [
+      "Forecasting & predictive modelling",
+      "Optimisation",
+      "Simulation",
+      "Statistical analysis",
+    ],
+  },
+  {
+    heading: "BI / Visualisation",
+    items: ["Tableau", "Power BI", "Apache Superset", "matplotlib", "seaborn"],
+  },
+  {
+    heading: "Cloud & Automation",
+    items: [
+      "AWS",
+      "Azure",
+      "Oracle Cloud",
+      "Docker (some hands-on experience)",
+      "Self-hosted Linux servers",
+      "REST API integration",
+      "n8n",
+      "Web scraping",
+      "Python automation pipelines",
+    ],
+  },
+  {
+    heading: "AI-Assisted Development",
+    items: ["Claude Code", "Codex", "Opencode"],
+  },
+];
+
+const languages = [
+  { name: "Azerbaijani", level: "Native", primary: true },
+  { name: "Turkish", level: "Native", primary: true },
+  { name: "English", level: "C1 - Proficient", primary: true },
+  { name: "Dutch", level: "A2 - actively learning", primary: false },
+];
+
+const hobbies = ["Calisthenics & fitness", "Running", "Philosophy", "Neuroscience", "Card games"];
 ---
 
 <BaseLayout title={`Resume | ${SITE.title}`} sideBarActiveItemID="about">
@@ -48,12 +248,114 @@ const personSchema = {
   <section class="mb-10">
     <h1 class="text-3xl font-bold mb-4">About Me</h1>
     <p class="text-base-content/80 leading-relaxed text-justify">
-      I'm a PhD candidate at Sabanci University exploring how machine learning and reinforcement
-      learning can improve trading execution and portfolio optimization. With a background in
-      analytics and modelling, I enjoy turning complex data into practical solutions
-      &mdash; whether building predictive models, automating workflows, or researching
-      quantitative strategies.
+      I'm a quantitative researcher and PhD candidate in Business Analytics & Operations
+      Management at Sabanci University. My research applies reinforcement learning to
+      quantitative finance problems: optimal trading, optimal execution, and portfolio
+      optimisation. I also study market-regime learning and financial-market simulation, and
+      build automated algorithmic trading strategies.
     </p>
+    <p class="text-base-content/80 leading-relaxed text-justify mt-3">
+      With an MSc in Business Analytics from the University of Edinburgh, I also work as a
+      business analyst: turning multi-source data into automated pipelines, dashboards, and
+      decision-ready analysis.
+    </p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Research -->
+  <section class="mb-10">
+    <h2 class="text-2xl font-bold mb-6">Research</h2>
+    <h3 class="font-bold text-lg">Recurrent PPO for Optimal Trading of Bitcoin Perpetual Futures</h3>
+    <p class="text-sm text-base-content/50 mb-3">PhD thesis, chapter one</p>
+    <p class="text-sm text-base-content/75 leading-relaxed text-justify">
+      A recurrent PPO agent (LSTM actor and critic) chooses a short, flat, or long position every
+      hour in BitMEX XBTUSD perpetual futures, observing the market over horizons from one hour to
+      one year and rewarded with the differential Sharpe ratio. It is retrained every year and
+      evaluated on the following year in an expanding walk-forward design (2021 to August 2026),
+      averaged over ten random initialisations.
+    </p>
+    <ul class="mt-3 space-y-1.5 text-sm text-base-content/75 text-justify list-disc pl-4 marker:text-primary/40">
+      <li>
+        In the frictionless baseline, the agent reached a 89.7% CAGR and a 1.39 Sharpe ratio,
+        against 14.8% and 0.53 for buy and hold and 33.5% and 0.78 for time-series momentum, the
+        strongest benchmark, and was profitable in every test year on average.
+      </li>
+      <li>
+        The baseline excludes fees, slippage, and funding payments; a realistic cost setup is in
+        progress and portfolio-level work follows.
+      </li>
+    </ul>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Projects -->
+  <section class="mb-10">
+    <h2 class="text-2xl font-bold mb-6">Projects / Startups</h2>
+    <div class="space-y-8">
+      <div class="relative pl-6 border-l-2 border-primary/30">
+        <div class="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-primary"></div>
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+          <div>
+            <h3 class="font-bold text-lg">
+              <a href="https://portafel.com" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">Portafel &mdash; Financial Research Platform</a>
+            </h3>
+            <p class="text-sm text-base-content/60">Founder</p>
+          </div>
+          <p class="text-sm text-base-content/50 sm:text-right shrink-0">Jan 2026 &mdash; Present</p>
+        </div>
+        <ul class="mt-2 space-y-1.5 text-sm text-base-content/75 text-justify list-disc pl-4 marker:text-primary/40">
+          <li>Financial-market research platform covering 10,987 active instruments across six asset classes: US-listed stocks, ETFs, world indices, commodities, FX pairs, and cryptocurrencies</li>
+          <li>Consolidates company research (quotes and charts, financial statements, SEC filings, analyst estimates, news) with multi-factor stock screening and FinBERT news sentiment</li>
+          <li>Private portfolios and watchlists with deterministic, evidence-linked alerts; web application with companion iOS and Android clients</li>
+        </ul>
+      </div>
+
+      <div class="relative pl-6 border-l-2 border-primary/30">
+        <div class="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-primary"></div>
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+          <div>
+            <h3 class="font-bold text-lg">
+              <a href="https://polymarket.mrzeynalli.com/" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">Polymarket BTC 15-minute Backtesting Environment</a>
+            </h3>
+            <p class="text-sm text-base-content/60">Independent project</p>
+          </div>
+          <p class="text-sm text-base-content/50 sm:text-right shrink-0">2026</p>
+        </div>
+        <ul class="mt-2 space-y-1.5 text-sm text-base-content/75 text-justify list-disc pl-4 marker:text-primary/40">
+          <li>Records the full public Level-2 order book, trades, and Binance and Chainlink BTC reference prices for BTC 15-minute Up/Down markets, normalised into versioned Parquet</li>
+          <li>Deterministic simulator in which orders walk the actual price ladder, with partial fills, fees, latency, stale-book checks, and displayed-liquidity haircuts</li>
+          <li>Indexes 570 markets recorded between 31 July and 6 August 2026, of which 285 meet strict backtesting requirements</li>
+        </ul>
+      </div>
+
+      <div class="relative pl-6 border-l-2 border-base-300">
+        <div class="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-base-300"></div>
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+          <h3 class="font-bold text-lg">
+            <a href="/blog/uk-cities-high-tech-potential" class="hover:text-primary transition-colors">Non-capital UK Cities with High-tech Potential</a>
+          </h3>
+          <p class="text-sm text-base-content/50 sm:text-right shrink-0">Jan 2023</p>
+        </div>
+        <p class="mt-2 text-sm text-base-content/75 text-justify">
+          Scraped Companies House records via API, filtered by SIC code, and ranked non-capital UK cities by tech-firm density and growth.
+        </p>
+      </div>
+
+      <div class="relative pl-6 border-l-2 border-base-300">
+        <div class="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-base-300"></div>
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+          <h3 class="font-bold text-lg">
+            <a href="/blog/scottish_schools_clustering" class="hover:text-primary transition-colors">Scottish State Schools: K-Means Clustering</a>
+          </h3>
+          <p class="text-sm text-base-content/50 sm:text-right shrink-0">Oct 2023</p>
+        </div>
+        <p class="mt-2 text-sm text-base-content/75 text-justify">
+          Clustered 2,431 Scottish state schools by pupil count and SIMD deprivation score to identify local authorities needing NGO support; k=3 selected via WCSS and silhouette analysis.
+        </p>
+      </div>
+    </div>
   </section>
 
   <div class="divider"></div>
@@ -62,107 +364,33 @@ const personSchema = {
   <section class="mb-10">
     <h2 class="text-2xl font-bold mb-6">Education</h2>
     <div class="space-y-8">
-      <!-- PhD -->
-      <div class="relative pl-6 border-l-2 border-primary/30">
-        <div class="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-primary"></div>
-        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
-          <div>
-            <h3 class="font-bold text-lg">PhD &mdash; Business Analytics & Operations Management</h3>
-            <p class="text-sm text-base-content/60">Sabanci University</p>
+      {
+        education.map(e => (
+          <div class="relative pl-6 border-l-2 border-primary/30">
+            <div class={`absolute -left-[7px] top-1.5 w-3 h-3 rounded-full ${e.primary ? "bg-primary" : "bg-base-300"}`} />
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+              <div>
+                <h3 class="font-bold text-lg">{e.title}</h3>
+                <p class="text-sm text-base-content/60">{e.org}</p>
+              </div>
+              <div class="sm:text-right shrink-0">
+                <p class="text-sm text-base-content/50">{e.dates}</p>
+                <p class="text-sm text-base-content/50">{e.place}</p>
+              </div>
+            </div>
+            {e.lines?.map(l => <p class="text-sm mt-2 text-base-content/70">{l}</p>)}
+            {e.scholarship && <p class="text-xs mt-1 text-primary/70">{e.scholarship}</p>}
+            {
+              e.coursework && (
+                <>
+                  <p class="text-xs font-semibold uppercase tracking-wider text-base-content/40 mt-3 mb-1">Coursework</p>
+                  <p class="text-sm text-base-content/60 text-justify">{e.coursework}</p>
+                </>
+              )
+            }
           </div>
-          <div class="sm:text-right shrink-0">
-            <p class="text-sm text-base-content/50">Feb 2024 &mdash; Present</p>
-            <p class="text-sm text-base-content/50">Istanbul, Turkey</p>
-          </div>
-        </div>
-        <p class="text-sm mt-2 text-base-content/70">GPA: 3.58 / 4.00</p>
-        <p class="text-xs mt-1 text-primary/70">Full Scholarship &mdash; Sabanci University Dean's Office</p>
-        <p class="text-xs font-semibold uppercase tracking-wider text-base-content/40 mt-3 mb-1">Coursework</p>
-        <p class="text-sm text-base-content/60 text-justify">
-          Operations & Decision Analytics &middot; Data Mining &middot;
-          Methods of Statistical Inference &middot; Probability & Statistics &middot;
-          Stochastic Processes &middot; Dynamic Programming &middot;
-          Empirical Methods in Operations Management &middot;
-          Modeling in Operations Management &middot;
-          Operations Research & Data Mining &middot;
-          Logistics & Transportation Systems Planning
-        </p>
-      </div>
-
-      <!-- MSc -->
-      <div class="relative pl-6 border-l-2 border-primary/30">
-        <div class="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-primary"></div>
-        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
-          <div>
-            <h3 class="font-bold text-lg">MSc &mdash; Business Analytics</h3>
-            <p class="text-sm text-base-content/60">University of Edinburgh</p>
-          </div>
-          <div class="sm:text-right shrink-0">
-            <p class="text-sm text-base-content/50">Sept 2022 &mdash; Sept 2023</p>
-            <p class="text-sm text-base-content/50">Edinburgh, Scotland, UK</p>
-          </div>
-        </div>
-        <p class="text-sm mt-2 text-base-content/70">Classification: Merit</p>
-        <p class="text-xs mt-1 text-primary/70">Full State Scholarship &mdash; Ministry of Science & Education, Republic of Azerbaijan</p>
-        <p class="text-xs font-semibold uppercase tracking-wider text-base-content/40 mt-3 mb-1">Coursework</p>
-        <p class="text-sm text-base-content/60 text-justify">
-          Predictive Analytics &middot; Prescriptive Analytics &middot;
-          Stochastic Optimization &middot; Simulation Modelling &middot;
-          Principles of Data Analytics &middot; Python Programming &middot;
-          Game Theory for Business Analytics &middot;
-          Web & Social Network Analytics &middot;
-          Soft Computing &middot; Industrial Organisation
-        </p>
-      </div>
-
-      <!-- Exchange -->
-      <div class="relative pl-6 border-l-2 border-primary/30">
-        <div class="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-base-300"></div>
-        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
-          <div>
-            <h3 class="font-bold text-lg">Exchange Semester</h3>
-            <p class="text-sm text-base-content/60">ICD Business School</p>
-          </div>
-          <div class="sm:text-right shrink-0">
-            <p class="text-sm text-base-content/50">Jan 2020 &mdash; May 2020</p>
-            <p class="text-sm text-base-content/50">Paris, France</p>
-          </div>
-        </div>
-        <p class="text-xs mt-2 text-primary/70">Erasmus+ Scholarship</p>
-        <p class="text-xs font-semibold uppercase tracking-wider text-base-content/40 mt-3 mb-1">Coursework</p>
-        <p class="text-sm text-base-content/60 text-justify">
-          International Finance &middot; Management of Complex Sales &middot;
-          Negotiation Strategies &middot; Digital Marketing &middot;
-          Business Plan &middot; Hackathon
-        </p>
-      </div>
-
-      <!-- BBA -->
-      <div class="relative pl-6 border-l-2 border-primary/30">
-        <div class="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-primary"></div>
-        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
-          <div>
-            <h3 class="font-bold text-lg">BBA &mdash; Business Administration</h3>
-            <p class="text-sm text-base-content/60">ADA University</p>
-          </div>
-          <div class="sm:text-right shrink-0">
-            <p class="text-sm text-base-content/50">Sept 2017 &mdash; Jun 2022</p>
-            <p class="text-sm text-base-content/50">Baku, Azerbaijan</p>
-          </div>
-        </div>
-        <p class="text-sm mt-2 text-base-content/70">GPA: 3.52 / 4.00</p>
-        <p class="text-xs font-semibold uppercase tracking-wider text-base-content/40 mt-3 mb-1">Coursework</p>
-        <p class="text-sm text-base-content/60 text-justify">
-          Business Analytics &middot; Business Statistics I & II &middot;
-          Operations Management &middot; Corporate Finance &middot;
-          Financial Investments &middot; Principles of Finance &middot;
-          Managerial Accounting &middot; Financial Accounting &middot;
-          Management Information Systems &middot; Calculus &middot;
-          Microeconomics &middot; Macroeconomics &middot;
-          Strategic Management &middot; Marketing Management &middot;
-          Corporate Communications &middot; Entrepreneurship
-        </p>
-      </div>
+        ))
+      }
     </div>
   </section>
 
@@ -172,120 +400,26 @@ const personSchema = {
   <section class="mb-10">
     <h2 class="text-2xl font-bold mb-6">Experience</h2>
     <div class="space-y-8">
-      <!-- Sabanci TA -->
-      <div class="relative pl-6 border-l-2 border-primary/30">
-        <div class="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-primary"></div>
-        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
-          <div>
-            <h3 class="font-bold text-lg">Teaching Assistant</h3>
-            <p class="text-sm text-base-content/60">Sabanci University</p>
+      {
+        experience.map(e => (
+          <div class="relative pl-6 border-l-2 border-primary/30">
+            <div class={`absolute -left-[7px] top-1.5 w-3 h-3 rounded-full ${e.primary ? "bg-primary" : "bg-base-300"}`} />
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+              <div>
+                <h3 class="font-bold text-lg">{e.title}</h3>
+                <p class="text-sm text-base-content/60">{e.org}</p>
+              </div>
+              <div class="sm:text-right shrink-0">
+                <p class="text-sm text-base-content/50">{e.dates}</p>
+                <p class="text-sm text-base-content/50">{e.place}</p>
+              </div>
+            </div>
+            <ul class="mt-2 space-y-1.5 text-sm text-base-content/75 text-justify list-disc pl-4 marker:text-primary/40">
+              {e.lines?.map(l => <li>{l}</li>)}
+            </ul>
           </div>
-          <div class="sm:text-right shrink-0">
-            <p class="text-sm text-base-content/50">Feb 2024 &mdash; Present</p>
-            <p class="text-sm text-base-content/50">Istanbul, Turkey</p>
-          </div>
-        </div>
-        <ul class="mt-2 space-y-1.5 text-sm text-base-content/75 text-justify list-disc pl-4 marker:text-primary/40">
-          <li>TA for Introduction to Data Analysis (MGMT 203), Introduction to Management (MGMT 201), International Business (MGMT 403), and Decision Making Under Uncertainty (OPIM 410)</li>
-          <li>Provided recitation classes, graded exams, delivered feedback, and guided student course projects</li>
-        </ul>
-      </div>
-
-      <!-- Chamberlain McBain -->
-      <div class="relative pl-6 border-l-2 border-primary/30">
-        <div class="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-base-300"></div>
-        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
-          <div>
-            <h3 class="font-bold text-lg">Business Development Assistant</h3>
-            <p class="text-sm text-base-content/60">Chamberlain McBain</p>
-          </div>
-          <div class="sm:text-right shrink-0">
-            <p class="text-sm text-base-content/50">Jun 2023 &mdash; Dec 2023</p>
-            <p class="text-sm text-base-content/50">Edinburgh, Scotland, UK</p>
-          </div>
-        </div>
-        <ul class="mt-2 space-y-1.5 text-sm text-base-content/75 text-justify list-disc pl-4 marker:text-primary/40">
-          <li>Scraped 4,000+ commercial property listings across Scotland and cross-matched them with 260,000+ valuation rolls from Scottish Assessors; built an interactive Tableau dashboard mapping property trends</li>
-          <li>Automated weekly scraping of 1,000+ court rolls; enriched records with Companies House API data to analyse pursuer/defender participation and industry representation</li>
-          <li>Built a Python pipeline (web scraping &rarr; demand modelling &rarr; automated visualisation &rarr; LinkedIn outreach) that replaced two days of manual weekly work</li>
-        </ul>
-      </div>
-
-      <!-- Ipsos MORI -->
-      <div class="relative pl-6 border-l-2 border-primary/30">
-        <div class="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-base-300"></div>
-        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
-          <div>
-            <h3 class="font-bold text-lg">Data Validation Associate</h3>
-            <p class="text-sm text-base-content/60">Ipsos MORI</p>
-          </div>
-          <div class="sm:text-right shrink-0">
-            <p class="text-sm text-base-content/50">Jan 2023 &mdash; Jun 2023</p>
-            <p class="text-sm text-base-content/50">Edinburgh, Scotland, UK</p>
-          </div>
-        </div>
-        <ul class="mt-2 space-y-1.5 text-sm text-base-content/75 text-justify list-disc pl-4 marker:text-primary/40">
-          <li>Validated data gathered from telephone interviews, surveys, and venue visits; cross-referenced inputs to ensure 100% accuracy and compliance with company standards</li>
-        </ul>
-      </div>
-
-      <!-- FINADCO -->
-      <div class="relative pl-6 border-l-2 border-primary/30">
-        <div class="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-base-300"></div>
-        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
-          <div>
-            <h3 class="font-bold text-lg">Junior Financial Analyst</h3>
-            <p class="text-sm text-base-content/60">FINADCO</p>
-          </div>
-          <div class="sm:text-right shrink-0">
-            <p class="text-sm text-base-content/50">Feb 2022 &mdash; Sept 2022</p>
-            <p class="text-sm text-base-content/50">Baku, Azerbaijan</p>
-          </div>
-        </div>
-        <ul class="mt-2 space-y-1.5 text-sm text-base-content/75 text-justify list-disc pl-4 marker:text-primary/40">
-          <li>Conducted due diligence and feasibility studies for large investment projects, including a $17M venture; performed financial modelling and sensitivity analysis in Excel and presented reports to guide investment decisions</li>
-          <li>Estimated the value of five government-owned tangible assets and equipment exceeding USD 4M; authored the final valuation report detailing techniques employed for each asset</li>
-          <li>Conducted market research on the global and local hazelnut industry as well as the local bond market</li>
-        </ul>
-      </div>
-
-      <!-- ADA University TA -->
-      <div class="relative pl-6 border-l-2 border-primary/30">
-        <div class="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-base-300"></div>
-        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
-          <div>
-            <h3 class="font-bold text-lg">Teaching Assistant</h3>
-            <p class="text-sm text-base-content/60">ADA University</p>
-          </div>
-          <div class="sm:text-right shrink-0">
-            <p class="text-sm text-base-content/50">Oct 2021 &mdash; Jan 2022</p>
-            <p class="text-sm text-base-content/50">Baku, Azerbaijan</p>
-          </div>
-        </div>
-        <ul class="mt-2 space-y-1.5 text-sm text-base-content/75 text-justify list-disc pl-4 marker:text-primary/40">
-          <li>TA for Business Statistics; organized classes, graded exams, and provided feedback to students</li>
-        </ul>
-      </div>
-
-      <!-- AMFA -->
-      <div class="relative pl-6 border-l-2 border-primary/30">
-        <div class="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-base-300"></div>
-        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
-          <div>
-            <h3 class="font-bold text-lg">Communications Assistant</h3>
-            <p class="text-sm text-base-content/60">Azerbaijan Micro-Finance Association</p>
-          </div>
-          <div class="sm:text-right shrink-0">
-            <p class="text-sm text-base-content/50">Jan 2021 &mdash; Dec 2021</p>
-            <p class="text-sm text-base-content/50">Baku, Azerbaijan</p>
-          </div>
-        </div>
-        <ul class="mt-2 space-y-1.5 text-sm text-base-content/75 text-justify list-disc pl-4 marker:text-primary/40">
-          <li>Assessed CSR project data and presented insights through interactive dashboards to senior stakeholders, leveraging Python and Excel</li>
-          <li>Pioneered a shift from handwritten data collection to a digital approach via Google Forms; directed the firm's social media and website presence, delivering monthly performance reports through Google Analytics</li>
-          <li>Orchestrated key stakeholder meetings, ensuring seamless coordination for guest invitations and communication</li>
-        </ul>
-      </div>
+        ))
+      }
     </div>
   </section>
 
@@ -295,73 +429,16 @@ const personSchema = {
   <section class="mb-10">
     <h2 class="text-2xl font-bold mb-6">Skills</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-      <div>
-        <h3 class="text-sm font-semibold text-base-content/50 uppercase tracking-wider mb-3">Programming</h3>
-        <div class="flex flex-wrap gap-2">
-          <span class="badge badge-outline">Python</span>
-          <span class="badge badge-outline">SQL</span>
-          <span class="badge badge-outline">Git</span>
-          <span class="badge badge-outline">Terminal</span>
-        </div>
-      </div>
-      <div>
-        <h3 class="text-sm font-semibold text-base-content/50 uppercase tracking-wider mb-3">Analytics</h3>
-        <div class="flex flex-wrap gap-2">
-          <span class="badge badge-outline">descriptive</span>
-          <span class="badge badge-outline">predictive</span>
-          <span class="badge badge-outline">prescriptive modelling</span>
-        </div>
-      </div>
-      <div>
-        <h3 class="text-sm font-semibold text-base-content/50 uppercase tracking-wider mb-3">Automation</h3>
-        <div class="flex flex-wrap gap-2">
-          <span class="badge badge-outline">n8n (low code)</span>
-          <span class="badge badge-outline">python (code-based)</span>
-          <span class="badge badge-outline">api integration</span>
-        </div>
-      </div>
-      <div>
-        <h3 class="text-sm font-semibold text-base-content/50 uppercase tracking-wider mb-3">BI / Visualisation</h3>
-        <div class="flex flex-wrap gap-2">
-          <span class="badge badge-outline">Power BI</span>
-          <span class="badge badge-outline">Tableau</span>
-          <span class="badge badge-outline">Matplotlib</span>
-        </div>
-      </div>
-      <div>
-        <h3 class="text-sm font-semibold text-base-content/50 uppercase tracking-wider mb-3">Cloud & Databases</h3>
-        <div class="flex flex-wrap gap-2">
-          <span class="badge badge-outline">AWS</span>
-          <span class="badge badge-outline">Azure</span>
-          <span class="badge badge-outline">PostgreSQL</span>
-          <span class="badge badge-outline">MongoDB</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- Test Scores -->
-  <section class="mb-10">
-    <h2 class="text-2xl font-bold mb-6">Test Scores</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-      <div class="p-4 rounded-lg bg-base-200/50 text-center">
-        <p class="text-2xl font-bold">640</p>
-        <p class="text-sm font-medium text-base-content/70">GMAT</p>
-        <p class="text-xs text-base-content/50 mt-1">Quant: 49 / 51</p>
-        <p class="text-xs text-base-content/40">Dec 2021</p>
-      </div>
-      <div class="p-4 rounded-lg bg-base-200/50 text-center">
-        <p class="text-2xl font-bold">110</p>
-        <p class="text-sm font-medium text-base-content/70">TOEFL iBT</p>
-        <p class="text-xs text-base-content/40 mt-1">Jan 2024</p>
-      </div>
-      <div class="p-4 rounded-lg bg-base-200/50 text-center">
-        <p class="text-2xl font-bold">8.0</p>
-        <p class="text-sm font-medium text-base-content/70">IELTS</p>
-        <p class="text-xs text-base-content/40 mt-1">Jun 2022</p>
-      </div>
+      {
+        skills.map(group => (
+          <div>
+            <h3 class="text-sm font-semibold text-base-content/50 uppercase tracking-wider mb-3">{group.heading}</h3>
+            <div class="flex flex-wrap gap-2">
+              {group.items.map(item => <span class="badge badge-outline">{item}</span>)}
+            </div>
+          </div>
+        ))
+      }
     </div>
   </section>
 
@@ -371,18 +448,14 @@ const personSchema = {
   <section class="mb-10">
     <h2 class="text-2xl font-bold mb-6">Languages</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <div class="flex items-center justify-between p-3 rounded-lg bg-base-200/50">
-        <span class="font-medium">Azerbaijani / Turkish</span>
-        <span class="badge badge-primary badge-sm">Native</span>
-      </div>
-      <div class="flex items-center justify-between p-3 rounded-lg bg-base-200/50">
-        <span class="font-medium">English</span>
-        <span class="badge badge-primary badge-sm">Fluent</span>
-      </div>
-      <div class="flex items-center justify-between p-3 rounded-lg bg-base-200/50">
-        <span class="font-medium">Dutch</span>
-        <span class="badge badge-ghost badge-sm">Elementary</span>
-      </div>
+      {
+        languages.map(l => (
+          <div class="flex items-center justify-between p-3 rounded-lg bg-base-200/50">
+            <span class="font-medium">{l.name}</span>
+            <span class={`badge badge-sm ${l.primary ? "badge-primary" : "badge-ghost"}`}>{l.level}</span>
+          </div>
+        ))
+      }
     </div>
   </section>
 
@@ -392,20 +465,7 @@ const personSchema = {
   <section class="mb-10">
     <h2 class="text-2xl font-bold mb-6">Hobbies & Interests</h2>
     <div class="flex flex-wrap gap-3">
-      <span class="badge badge-lg badge-ghost">Calisthenics</span>
-      <span class="badge badge-lg badge-ghost">Fitness</span>
-      <span class="badge badge-lg badge-ghost">Running</span>
-      <span class="badge badge-lg badge-ghost">Cryptocurrencies</span>
-      <span class="badge badge-lg badge-ghost">Philosophy</span>
-      <span class="badge badge-lg badge-ghost">Politics</span>
-      <a
-        href="https://www.behance.net/mrzeynalli"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="badge badge-lg badge-ghost hover:badge-primary transition-colors"
-      >
-        Graphic Design &nearr;
-      </a>
+      {hobbies.map(h => <span class="badge badge-lg badge-ghost">{h}</span>)}
     </div>
   </section>
 

@@ -13,7 +13,7 @@ stack:
   - SQLite
   - systemd
   - Docker
-liveUrl: https://polymarket.portafel.com
+liveUrl: https://polymarket.mrzeynalli.com/
 featured: true
 order: 10
 relatedPosts:
