@@ -29,6 +29,22 @@
       overflow-y: hidden;
     }
 
+    /* Numbered reference list, the target of in-text citation links */
+    .post-references {
+      font-size: 0.8125rem;
+      line-height: 1.5;
+
+      p {
+        @apply my-2 rounded;
+        scroll-margin-top: 1.5rem;
+        overflow-wrap: anywhere;
+      }
+
+      p:target {
+        @apply bg-base-200;
+      }
+    }
+
     /* Wide tables scroll inside themselves rather than the page */
     table {
       @apply block w-max max-w-full overflow-x-auto;
