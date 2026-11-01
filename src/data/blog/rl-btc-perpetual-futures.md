@@ -18,7 +18,7 @@ description: "A recurrent PPO agent chooses a short, flat, or long Bitcoin perpe
 ---
 
 **Project description**
-- *Authors:* Elvin Zeynalli and Altug Tanaltay, Sabanci Business School
+- *Author:* Elvin Zeynalli, Sabanci Business School
 - *Language:* Python
 - *Libraries:* PyTorch, numpy, pandas
 - *Project type:* Deep reinforcement learning, optimal trading
@@ -227,22 +227,22 @@ The yearly view matters most for the research question, because it shows whether
 
 | Return (%) | 2021 | 2022 | 2023 | 2024 | 2025 | 2026* |
 |---|--:|--:|--:|--:|--:|--:|
-| **PPO agent** | **107.9** | **207.0** | **63.2** | **181.8** | **33.6** | **20.9** |
-| Buy and hold | 59.6 | −64.2 | 156.1 | 120.7 | −6.3 | −28.3 |
-| 50 day moving average | 131.3 | −48.6 | 118.9 | 31.2 | 7.5 | 11.1 |
+| **PPO agent** | 107.9 | **207.0** | 63.2 | **181.8** | **33.6** | 20.9 |
+| Buy and hold | 59.6 | −64.2 | **156.1** | 120.7 | −6.3 | −28.3 |
+| 50 day moving average | **131.3** | −48.6 | 118.9 | 31.2 | 7.5 | 11.1 |
 | 200 day moving average | −67.1 | 85.1 | 45.3 | 41.6 | −28.9 | 24.0 |
 | Time series momentum | 59.6 | 75.1 | −33.0 | 120.7 | −1.8 | 24.0 |
-| MACD | −17.9 | −13.2 | 12.0 | 5.8 | −36.7 | 40.8 |
+| MACD | −17.9 | −13.2 | 12.0 | 5.8 | −36.7 | **40.8** |
 | RSI | −23.5 | 19.3 | −27.0 | −35.2 | −2.4 | −11.2 |
 
 | Sharpe ratio | 2021 | 2022 | 2023 | 2024 | 2025 | 2026* |
 |---|--:|--:|--:|--:|--:|--:|
-| **PPO agent** | **1.19** | **1.90** | **1.35** | **2.14** | **0.87** | **0.94** |
-| Buy and hold | 0.97 | −1.28 | 2.39 | 1.75 | 0.08 | −1.04 |
-| 50 day moving average | 1.40 | −0.71 | 2.03 | 0.78 | 0.39 | 0.62 |
+| **PPO agent** | 1.19 | **1.90** | 1.35 | **2.14** | **0.87** | 0.94 |
+| Buy and hold | 0.97 | −1.28 | **2.39** | 1.75 | 0.08 | −1.04 |
+| 50 day moving average | **1.40** | −0.71 | 2.03 | 0.78 | 0.39 | 0.62 |
 | 200 day moving average | −0.84 | 1.28 | 1.08 | 0.92 | −0.54 | 1.04 |
 | Time series momentum | 0.97 | 1.19 | −0.71 | 1.75 | 0.18 | 1.04 |
-| MACD | 0.21 | 0.10 | 0.48 | 0.37 | −0.80 | 1.53 |
+| MACD | 0.21 | 0.10 | 0.48 | 0.37 | −0.80 | **1.53** |
 | RSI | −0.45 | 0.71 | −1.21 | −1.74 | −0.11 | −0.87 |
 
 The PPO agent was profitable in all six years, both when the price rose and when it fell. In 2022, when buy and hold lost 64.2 percent, the agent gained 207.0 percent. In 2025 and the first seven months of 2026, when the price fell by 6.3 and 28.3 percent, it gained 33.6 and 20.9 percent. It trailed buy and hold in 2023, the year of the strongest and least volatile advance, when it gained 63.2 percent against 156.1 percent. Across the 60 combinations of the ten agents and the six years, 59 were profitable. The sole loss was 7.4 percent for one run in 2021.
