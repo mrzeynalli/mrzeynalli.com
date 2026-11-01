@@ -38,11 +38,11 @@ The question is whether a reinforcement learning (RL) agent can generalize acros
 
 Quantitative trading has traditionally relied on statistical models of prices or on forecasts that are translated into positions through an additional rule. Both approaches separate the description of the market from the trading decision. A trade, however, is a sequence of decisions whose consequences unfold over time, and a forecast that is accurate over one horizon does not by itself determine whether a position should be opened, held, or closed.
 
-RL removes this separation, because the trading objective itself becomes the target of learning. This line of work goes back to Moody and Saffell, who trained recurrent trading systems directly against risk adjusted objectives, and it was later extended with deep networks by Deng et al., Zhang, Zohren and Roberts, and Jiang et al.
+RL removes this separation, because the trading objective itself becomes the target of learning. This line of work goes back to Moody and Saffell [1], who trained recurrent trading systems directly against risk adjusted objectives, and it was later extended with deep networks by Deng et al. [2], Zhang, Zohren and Roberts [3], and Jiang et al. [4].
 
-When prices reflect available information, as Fama argued, predictable patterns are small and tend to disappear once exploited. Yet markets pass through periods of steady advance, turbulent decline, and movement without a clear direction, and each condition tends to persist for a while. An agent should therefore learn to recognize the prevailing condition, hold an exposure that suits it, and adjust when the condition changes. The paper refers to this ability as trading instinct.
+When prices reflect available information, as Fama argued [5], predictable patterns are small and tend to disappear once exploited. Yet markets pass through periods of steady advance, turbulent decline, and movement without a clear direction, and each condition tends to persist for a while [6]. An agent should therefore learn to recognize the prevailing condition, hold an exposure that suits it, and adjust when the condition changes. The paper refers to this ability as trading instinct.
 
-Bitcoin perpetual futures make this problem particularly demanding. These contracts trade continuously, allow long and short positions without an expiry date, and rely on periodic funding payments to keep their price close to the underlying asset. Studies of RL on these contracts remain few. Borrageiro et al. let the policy keep learning during evaluation, whereas Chun et al. use a single test period. Neither design shows whether annual retraining, followed by evaluation with fixed parameters, produces consistent results across several years.
+Bitcoin perpetual futures make this problem particularly demanding. These contracts trade continuously, allow long and short positions without an expiry date, and rely on periodic funding payments to keep their price close to the underlying asset [7]. Studies of RL on these contracts remain few. Borrageiro et al. [8] let the policy keep learning during evaluation, whereas Chun et al. [9] use a single test period. Neither design shows whether annual retraining, followed by evaluation with fixed parameters, produces consistent results across several years.
 
 ## Problem Definition
 
@@ -77,7 +77,7 @@ so a long position earns the percentage change of the price, a short position ea
 
 ### Reward
 
-The reward favours returns that are high relative to their variability rather than profit alone. It is the differential Sharpe ratio of Moody et al., which measures the contribution of the latest return to an exponentially weighted Sharpe ratio of the account. With $A_t$ and $B_t$ the exponentially weighted mean and mean square of recent returns, $\Delta A_t=R_t-A_{t-1}$, and $\Delta B_t=R_t^2-B_{t-1}$, the reward is
+The reward favours returns that are high relative to their variability rather than profit alone. It is the differential Sharpe ratio of Moody et al. [10], which measures the contribution of the latest return to an exponentially weighted Sharpe ratio of the account. With $A_t$ and $B_t$ the exponentially weighted mean and mean square of recent returns, $\Delta A_t=R_t-A_{t-1}$, and $\Delta B_t=R_t^2-B_{t-1}$, the reward is
 
 $$
 D_t=\frac{B_{t-1}\Delta A_t-\tfrac12 A_{t-1}\Delta B_t}
@@ -88,14 +88,14 @@ It is positive when the latest return improves the risk adjusted performance of 
 
 ## Agent Architecture
 
-The agent has separate networks for the policy and the value function. The actor assigns probabilities to the three positions, and the critic estimates the discounted rewards expected from the current observation history. Each network processes the observation with a long short term memory (LSTM) layer, followed by a fully connected layer and a linear output layer, and its recurrent memory is carried from one hour to the next.
+The agent has separate networks for the policy and the value function. The actor assigns probabilities to the three positions, and the critic estimates the discounted rewards expected from the current observation history. Each network processes the observation with a long short term memory (LSTM) layer [11], followed by a fully connected layer and a linear output layer, and its recurrent memory is carried from one hour to the next.
 
 ![Figure 2: Architecture of the recurrent actor and critic](../../assets/images/rl_btc_perpetuals/architecture.png)
 *Figure 2: Architecture of the recurrent actor and critic.*
 
 ## Learning Algorithm
 
-PPO, introduced by Schulman et al., alternates between collecting experience with the current policy and updating both networks from that experience. The quality of an action is measured by its advantage $\widetilde A_t$, the amount by which its outcome exceeded what the critic expected. The actor maximizes the clipped objective with an entropy bonus,
+PPO, introduced by Schulman et al. [12], alternates between collecting experience with the current policy and updating both networks from that experience. The quality of an action is measured by its advantage $\widetilde A_t$, the amount by which its outcome exceeded what the critic expected. The actor maximizes the clipped objective with an entropy bonus,
 
 $$
 J(\theta)=\frac{1}{|\mathcal B|}\sum_{t\in\mathcal B}
@@ -106,18 +106,18 @@ $$
 
 where $\rho_t$ is the ratio between the probabilities of the chosen action under the updated policy and under the policy that collected the data. The clipping with $\epsilon=0.2$ removes the incentive to change the probability of an action by more than about 20 percent on the basis of a single sample, and the entropy bonus encourages the agent to try different actions during training. The critic minimizes the squared error of its value estimates.
 
-The training data are presented as one continuous path. Eight copies of the environment traverse it from evenly spaced starting points, so every update combines experience from different market conditions. Because the outcome of a single run can vary considerably with the random initialization, as Henderson et al. show, ten agents are trained from different initializations, and the reported PPO agent is the average of their separately evaluated results.
+The training data are presented as one continuous path. Eight copies of the environment traverse it from evenly spaced starting points, so every update combines experience from different market conditions. Because the outcome of a single run can vary considerably with the random initialization, as Henderson et al. show [13], ten agents are trained from different initializations, and the reported PPO agent is the average of their separately evaluated results.
 
 ## Walk Forward Evaluation
 
-The agent is evaluated with an expanding walk forward design, in the form used by Gu, Kelly and Xiu. Each calendar year from 2021 to 2026 is a test year. Before each test year, the settings of the agent are chosen using only the preceding years, the agent is trained on all data up to the end of the previous year, and its parameters remain fixed while it trades. Each test year then becomes part of the training data for the following years.
+The agent is evaluated with an expanding walk forward design, in the form used by Gu, Kelly and Xiu [14]. Each calendar year from 2021 to 2026 is a test year. Before each test year, the settings of the agent are chosen using only the preceding years, the agent is trained on all data up to the end of the previous year, and its parameters remain fixed while it trades. Each test year then becomes part of the training data for the following years.
 
 ![Figure 3: Expanding walk forward design](../../assets/images/rl_btc_perpetuals/walk_forward.png)
 *Figure 3: Expanding walk forward design.*
 
-Sixteen candidate configurations of the actor learning rate, network width, entropy coefficient, and reward adaptation rate are compared, and the one standard error rule of Hastie et al. sets the number of training passes and favours configurations that perform consistently across years. The choices were stable, and the rule shortened training in every year.
+Sixteen candidate configurations of the actor learning rate, network width, entropy coefficient, and reward adaptation rate are compared, and the one standard error rule of Hastie et al. [15] sets the number of training passes and favours configurations that perform consistently across years. The choices were stable, and the rule shortened training in every year.
 
-The benchmarks are buy and hold, the 50 day and 200 day moving average rules, time series momentum, the moving average convergence divergence (MACD) rule, the relative strength index (RSI) rule, and a random policy, evaluated on the same hours and under the same accounting.
+The benchmarks are buy and hold, the 50 day and 200 day moving average rules [16], time series momentum [17], the moving average convergence divergence (MACD) rule [18], the relative strength index (RSI) rule [19], and a random policy, evaluated on the same hours and under the same accounting.
 
 ## Results
 
@@ -170,3 +170,43 @@ In the figure, the equity of every strategy is rebased to 10,000 USD at the star
 The PPO agent was profitable in all six years, both when the price rose and when it fell. In 2022, when buy and hold lost 64.2 percent, the agent gained 207.0 percent. In 2025 and the first seven months of 2026, when the price fell by 6.3 and 28.3 percent, it gained 33.6 and 20.9 percent. It trailed buy and hold in 2023, the year of the strongest and least volatile advance, when it gained 63.2 percent against 156.1 percent. Across the 60 combinations of the ten agents and the six years, 59 were profitable. The sole loss was 7.4 percent for one run in 2021.
 
 The benchmarks depended on the conditions they encountered. Buy and hold and the 50 day moving average rule gained strongly in 2023 but lost heavily in 2022. Time series momentum profited from the decline of 2022 but lost in 2023, when the direction of the market reversed. Every benchmark lost money in at least one year, and none had a positive Sharpe ratio in every year, whereas the Sharpe ratio of the PPO agent was positive in all six. The agent did not need to be the best strategy in every year to outperform over the complete period. What distinguishes it is that it remained profitable as the market moved from one condition to another.
+
+## References
+
+\[1\] Moody, J., & Saffell, M. (2001). Learning to trade via direct reinforcement. *IEEE Transactions on Neural Networks*, 12(4), 875–889. https://doi.org/10.1109/72.935097
+
+\[2\] Deng, Y., Bao, F., Kong, Y., Ren, Z., & Dai, Q. (2017). Deep direct reinforcement learning for financial signal representation and trading. *IEEE Transactions on Neural Networks and Learning Systems*, 28(3), 653–664. https://doi.org/10.1109/TNNLS.2016.2522401
+
+\[3\] Zhang, Z., Zohren, S., & Roberts, S. (2020). Deep reinforcement learning for trading. *The Journal of Financial Data Science*, 2(2), 25–40. https://doi.org/10.3905/jfds.2020.1.030
+
+\[4\] Jiang, Z., Xu, D., & Liang, J. (2017). A deep reinforcement learning framework for the financial portfolio management problem. arXiv preprint. https://doi.org/10.48550/arXiv.1706.10059
+
+\[5\] Fama, E. F. (1970). Efficient capital markets: A review of theory and empirical work. *The Journal of Finance*, 25(2), 383–417. https://doi.org/10.2307/2325486
+
+\[6\] Ang, A., & Timmermann, A. (2012). Regime changes and financial markets. *Annual Review of Financial Economics*, 4, 313–337. https://doi.org/10.1146/annurev-financial-110311-101808
+
+\[7\] He, S., Manela, A., Ross, O., & von Wachter, V. (2022). Fundamentals of perpetual futures. arXiv preprint. https://arxiv.org/abs/2212.06888
+
+\[8\] Borrageiro, G., Firoozye, N., & Barucca, P. (2022). The recurrent reinforcement learning crypto agent. *IEEE Access*, 10, 38590–38599. https://doi.org/10.1109/ACCESS.2022.3166599
+
+\[9\] Chun, J. H., & Lee, S. J. (2025). Cryptocurrency futures portfolio trading system using reinforcement learning. *Applied Sciences*, 15(17), 9400. https://doi.org/10.3390/app15179400
+
+\[10\] Moody, J., Wu, L., Liao, Y., & Saffell, M. (1998). Performance functions and reinforcement learning for trading systems and portfolios. *Journal of Forecasting*, 17(5–6), 441–470.
+
+\[11\] Hochreiter, S., & Schmidhuber, J. (1997). Long short-term memory. *Neural Computation*, 9(8), 1735–1780. https://doi.org/10.1162/neco.1997.9.8.1735
+
+\[12\] Schulman, J., Wolski, F., Dhariwal, P., Radford, A., & Klimov, O. (2017). Proximal policy optimization algorithms. arXiv preprint. https://doi.org/10.48550/arXiv.1707.06347
+
+\[13\] Henderson, P., Islam, R., Bachman, P., Pineau, J., Precup, D., & Meger, D. (2018). Deep reinforcement learning that matters. *Proceedings of the Thirty Second AAAI Conference on Artificial Intelligence*, 3207–3214.
+
+\[14\] Gu, S., Kelly, B., & Xiu, D. (2020). Empirical asset pricing via machine learning. *The Review of Financial Studies*, 33(5), 2223–2273. https://doi.org/10.1093/rfs/hhaa009
+
+\[15\] Hastie, T., Tibshirani, R., & Friedman, J. (2009). *The elements of statistical learning: Data mining, inference, and prediction* (2nd ed.). Springer. https://doi.org/10.1007/978-0-387-84858-7
+
+\[16\] Brock, W., Lakonishok, J., & LeBaron, B. (1992). Simple technical trading rules and the stochastic properties of stock returns. *The Journal of Finance*, 47(5), 1731–1764. https://doi.org/10.1111/j.1540-6261.1992.tb04681.x
+
+\[17\] Moskowitz, T. J., Ooi, Y. H., & Pedersen, L. H. (2012). Time series momentum. *Journal of Financial Economics*, 104(2), 228–250. https://doi.org/10.1016/j.jfineco.2011.11.003
+
+\[18\] Appel, G. (2005). *Technical analysis: Power tools for active investors*. FT Prentice Hall.
+
+\[19\] Wilder, J. W. (1978). *New concepts in technical trading systems*. Trend Research.
